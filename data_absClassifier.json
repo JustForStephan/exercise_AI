@@ -1,0 +1,17 @@
+{
+  "training_data": {
+    "x1": [],
+    "x2": [],
+    "y": [],
+    "etha": 0.01,
+    "running_index": 100
+  },
+  "neural_network_configuration": {
+    "w": [0,0]
+  },
+
+  "to_classify" : {
+    "x1": [],
+    "x2": []
+  }
+}
