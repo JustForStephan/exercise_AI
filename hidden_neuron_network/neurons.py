@@ -14,9 +14,15 @@ class neuron:
         self.y = self.calc_y(self.z)
 
     def calc_z(self, x, w):
-        z = numpy.dot(x,w)
-        if z.shape != (): z = z[0]
+        print(w)
+        z = 0
+        for i in range(len(x)):
+            z += float(x[i])*float(w[i])
         return z
 
     def calc_y(self, z):
         return 1/(1+numpy.exp((-1)*z))
+
+    def update(self, x, w):
+        self.z = self.calc_z(x, w)
+        self.y = self.calc_y(self.z)
