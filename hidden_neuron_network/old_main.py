@@ -12,9 +12,9 @@ etha = 0.0001
 x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 y = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
-#for i in range(len(x)):
-#    x[i] = x[i]/1000
-#    y[i] = y[i]/1000
+for i in range(len(x)):
+    x[i] = x[i]
+
 
 #declaration of neurons
 neuron1 = neuron([1], [w[1][0]])
@@ -45,12 +45,12 @@ for running_index in range(100000):
         neuron5.update([neuron3.y, neuron4.y], [w[3], w[4]])
         e = y[i] - neuron5.y
 
-        w[3] += 2 * e * neuron3.y * etha
-        w[4] += 2 * e * neuron4.y * etha
-        w[1][0] += 2 * e * w[3] * neuron3.z * (1 - neuron3.z) * neuron1.y * etha
-        w[1][1] += 2 * e * w[4] * neuron4.z * (1 - neuron4.z) * neuron1.y * etha
-        w[2][0] += 2 * e * w[3] * neuron3.z * (1 - neuron3.z) * neuron2.y * etha
-        w[2][1] += 2 * e * w[4] * neuron4.z * (1 - neuron4.z) * neuron2.y * etha
+        w[3] += 2 * e * neuron5.z * (1 - neuron5.z) * neuron3.y * etha
+        w[4] += 2 * e * neuron5.z * (1 - neuron5.z) * neuron4.y * etha
+        w[1][0] += 2 * e * neuron5.z * (1 - neuron5.z) * w[3] * neuron3.z * (1 - neuron3.z) * neuron1.y * etha
+        w[1][1] += 2 * e * neuron5.z * (1 - neuron5.z) * w[4] * neuron4.z * (1 - neuron4.z) * neuron1.y * etha
+        w[2][0] += 2 * e * neuron5.z * (1 - neuron5.z) * w[3] * neuron3.z * (1 - neuron3.z) * neuron2.y * etha
+        w[2][1] += 2 * e * neuron5.z * (1 - neuron5.z) * w[4] * neuron4.z * (1 - neuron4.z) * neuron2.y * etha
         print(w[1][0])
         print(w[2][0])
         print(w[3])
@@ -64,7 +64,6 @@ for i in range(len(x)):
     neuron4 = neuron([neuron1.y, neuron2.y], [w[1][1], w[2][1]])
     neuron5 = neuronOutput([neuron3.y, neuron4.y], [w[3], w[4]])
     new_y.append(neuron5.y)
-
 
 print("--------------------------------\n\n\n")
 print(x)
